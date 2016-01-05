@@ -27,9 +27,14 @@ RUN apt-get update && apt-get install -y python-graph-tool
 # Install Python dependencie
 RUN apt-get install -y curl
 RUN curl -fSL 'https://bootstrap.pypa.io/get-pip.py' | python2
-RUN pip install jupyter
 
-RUN mkdir /notebooks
-WORKDIR /notebooks
+RUN pip install jupyter flask flask-restful
 
-CMD python
+RUN mkdir /app
+WORKDIR /app
+
+ADD . /app
+
+EXPOSE 5000
+
+CMD ["python", "api/api.py"]
