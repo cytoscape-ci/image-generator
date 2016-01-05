@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y python-graph-tool
 RUN apt-get install -y curl
 RUN curl -fSL 'https://bootstrap.pypa.io/get-pip.py' | python2
 
-RUN pip install jupyter flask flask-restful
+RUN pip install flask flask-restful cxio
 
 RUN mkdir /app
 WORKDIR /app
