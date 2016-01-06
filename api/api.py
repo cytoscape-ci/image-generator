@@ -1,7 +1,10 @@
 from flask import Flask
 from flask_restful import Resource, Api
 
-from image_generator import ImageGenerator
+from bitmap_image_generator import BitmapImageGenerator
+from vector_image_generator import VectorImageGenerator
+from graphviz_image_generator import GraphvizImageGenerator
+
 from status import Status
 
 
@@ -11,8 +14,9 @@ api = Api(app)
 # Routing
 api.add_resource(Status, '/')
 
-api.add_resource(ImageGenerator, '/image')
-# api.add_resource(ImageGenerator, '/image.pdf')
+api.add_resource(GraphvizImageGenerator, '/image/graphviz/<string:img_type>')
+api.add_resource(VectorImageGenerator, '/image/<string:img_type>')
+api.add_resource(BitmapImageGenerator, '/image')
 
 
 if __name__ == '__main__':
