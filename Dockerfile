@@ -1,12 +1,8 @@
 #
-# Docker image for VIZBI 2015 Tutorial
+# Docker image for graph-tool server
 #
-# This is a generic setup for network data analysis and visualization.
-# This Distribution includes:
-#  - Python
-#  - IPython Notebook
-#  - Standard data analysis tools, including SciPy and NumPy
-#  - NetworkX, igraph, and graph-tool
+# - This creates plain Python 2.x server with graph-tool and flask to 
+#   implement graph processing web API.
 #
 FROM debian:jessie
 
@@ -22,14 +18,13 @@ RUN echo "deb-src http://downloads.skewed.de/apt/jessie jessie main" >>/etc/apt/
 RUN apt-key add graph-tool-pub-key.txt
 
 # Install OS-level packages and misc. tools
-RUN apt-get update && apt-get install -y python-graph-tool
+RUN apt-get update && apt-get install -y curl python-graph-tool
 
 # Install Python dependencie
-RUN apt-get install -y curl
 RUN curl -fSL 'https://bootstrap.pypa.io/get-pip.py' | python2
+RUN pip install flask flask-restful
 
-RUN pip install flask flask-restful cxio
-
+# Add directory for REST API server code
 RUN mkdir /app
 WORKDIR /app
 
@@ -37,4 +32,5 @@ ADD . /app
 
 EXPOSE 5000
 
+# Run API server
 CMD ["python", "api/api.py"]

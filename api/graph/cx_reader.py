@@ -36,7 +36,8 @@ class GraphGenerator:
         for node in nodes:
             v = g.add_vertex()
             node_id = node['@id']
-            g.vertex_properties['label'][v] = node['n']
+            if 'n' in node:
+                g.vertex_properties['label'][v] = node['n']
             vmap[node_id] = v
 
         for edge in edges:
