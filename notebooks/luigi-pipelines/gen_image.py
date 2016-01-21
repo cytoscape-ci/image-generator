@@ -6,6 +6,7 @@ import requests
 # BASE = 'http://52.35.133.2:5000/'
 
 BASE = 'http://192.168.99.100:5000/'
+
 NDEX_URL = 'http://dev2.ndexbio.org/rest/'
 
 
