@@ -12,8 +12,11 @@ app = Flask(__name__)
 api = Api(app)
 
 # Routing
+
+# Status
 api.add_resource(Status, '/')
 
+# Image generation
 api.add_resource(GraphvizImageGenerator, '/image/graphviz/<string:img_type>')
 api.add_resource(VectorImageGenerator, '/image/<string:img_type>')
 api.add_resource(BitmapImageGenerator, '/image')

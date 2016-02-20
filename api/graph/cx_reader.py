@@ -2,7 +2,6 @@ import graph_tool.all as gt
 
 import logging
 import math
-import random
 
 SUPPORTED_IMAGE_TYPE = ['ps', 'pdf', 'svg', 'png']
 
@@ -35,7 +34,8 @@ NODE_SHAPE_MAP = {
 }
 
 
-DEF_COLOR = [0.6, 0.6, 0.6, 1.0]
+DEF_COLOR = [127.0/255.0, 205.0/255.0, 187.0/255.0, 1.0]
+DEF_SHAPE = 'circle'
 
 
 class GraphGenerator:
@@ -67,7 +67,7 @@ class GraphGenerator:
             elif 'nodeAttributes' in entry:
                 for na in entry['nodeAttributes']:
                     attr_name = na['n']
-                    logging.warn(attr_name)
+                    # logging.warn(attr_name)
                     if attr_name == 'tax_id':
                         pointer = str(na['po'])
                         species[pointer] = na['v']
@@ -76,7 +76,6 @@ class GraphGenerator:
                         node_type[pointer] = na['v']
 
         vmap = {}
-        logging.warn(node_type)
 
         for node in nodes:
             v = g.add_vertex()
@@ -130,7 +129,6 @@ def render(g, file_name, layout):
 
     vertex_color = g.new_vertex_property('vector<double>', val=[0, 0, 0, 0])
     vertex_size = g.new_vertex_property('double', val=12)
-    # vertex_fill_color = g.new_vertex_property('vector<double>', val=[0, 0.2, 1, 0.9])
     vertex_font_size = g.new_vertex_property('int', val=5)
     vertex_font_family = g.new_vertex_property('string', 'helvatica')
     vertex_text_position = g.new_vertex_property('double', val=(math.pi*(2.0/8.0)))
@@ -140,8 +138,6 @@ def render(g, file_name, layout):
     edge_color = g.new_edge_property('vector<double>', val=[0.179, 0.203, 0.210, 0.3])
     edge_pen_width = g.new_edge_property('double', val=0.5)
     edge_end_marker = g.new_edge_property('string', val='none')
-
-
 
     gt.graph_draw(g, pos=pos,
                   vertex_color=vertex_color,
@@ -157,7 +153,7 @@ def render(g, file_name, layout):
                   edge_color=edge_color,
                   edge_pen_width=edge_pen_width,
                   edge_end_marker=edge_end_marker,
-                  output_size=(1000, 800), output=file_name)
+                  output_size=(1600, 1600), output=file_name)
 
     return file_name
 
@@ -184,18 +180,17 @@ def generate_color_map(g):
             if gene_type in NODE_SHAPE_MAP:
                 g.vertex_properties['shape'][v] = NODE_SHAPE_MAP[gene_type]
             else:
-                g.vertex_properties['shape'][v] = 'hexagon'
+                g.vertex_properties['shape'][v] = DEF_SHAPE
     else:
         for v in g.vertices():
             g.vertex_properties['fill_color'][v] = DEF_COLOR
-
 
 
 def render_graphviz(g, file_name):
     gt.graphviz_draw(g,
                      vcolor='#0055FF',
                      elen=10,
-                     # layout='neato',
+                     layout='dot',
                      output=file_name,
                      size=(30, 30),
                      vsize=1,
