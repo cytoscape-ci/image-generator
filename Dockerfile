@@ -8,6 +8,8 @@ FROM debian:jessie
 
 MAINTAINER Keiichiro Ono <kono@ucsd.edu>
 
+RUN apt-get update && apt-get install -y apt-transport-https
+
 # For installing graph-tool
 RUN mkdir /graph-tool
 WORKDIR /graph-tool
@@ -18,7 +20,8 @@ RUN echo "deb-src http://downloads.skewed.de/apt/jessie jessie main" >>/etc/apt/
 RUN apt-key add graph-tool-pub-key.txt
 
 # Install OS-level packages and misc. tools
-RUN apt-get update && apt-get install -y curl python-graph-tool
+RUN apt-get update
+RUN apt-get install -y curl python-graph-tool
 
 # Install Python dependencie
 RUN curl -fSL 'https://bootstrap.pypa.io/get-pip.py' | python2
