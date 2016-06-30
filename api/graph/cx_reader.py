@@ -128,22 +128,24 @@ def render(g, file_name, layout):
     generate_color_map(g)
 
     vertex_color = g.new_vertex_property('vector<double>', val=[0, 0, 0, 0])
-    vertex_size = g.new_vertex_property('double', val=12)
-    vertex_font_size = g.new_vertex_property('int', val=5)
+    vertex_size = g.new_vertex_property('double', val=25)
+    vertex_font_size = g.new_vertex_property('int', val=10)
     vertex_font_family = g.new_vertex_property('string', 'helvatica')
     vertex_text_position = g.new_vertex_property('double', val=(math.pi*(2.0/8.0)))
-    vertex_text_color = g.new_vertex_property('vector<double>', val=[0.5, 0.5, 0.5, 0.8])
+    vertex_text_color = g.new_vertex_property('vector<double>', val=[0.5,
+                                                                     0.5, 0.5, 0.9])
 
     # Edge properties
-    edge_color = g.new_edge_property('vector<double>', val=[0.179, 0.203, 0.210, 0.3])
-    edge_pen_width = g.new_edge_property('double', val=0.5)
+    edge_color = g.new_edge_property('vector<double>', val=[0.179, 0.203,
+                                                            0.210, 0.9])
+    edge_pen_width = g.new_edge_property('double', val=5)
     edge_end_marker = g.new_edge_property('string', val='none')
 
     gt.graph_draw(g, pos=pos,
                   vertex_color=vertex_color,
                   vertex_fill_color=g.vertex_properties['fill_color'],
                   vertex_shape=g.vertex_properties['shape'],
-                  vertex_text=g.vertex_properties['label'],
+                  # vertex_text=g.vertex_properties['label'],
                   vertex_font_size=vertex_font_size,
                   vertex_font_family=vertex_font_family,
                   vertex_text_position=vertex_text_position,
