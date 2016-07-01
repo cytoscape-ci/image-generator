@@ -32,6 +32,7 @@ RUN mkdir /app
 WORKDIR /app
 
 ADD . /app
+RUN mkdir /app/images
 
 EXPOSE 5000
 
