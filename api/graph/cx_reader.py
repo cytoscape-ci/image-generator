@@ -34,7 +34,7 @@ NODE_SHAPE_MAP = {
 }
 
 
-DEF_COLOR = [127.0/255.0, 205.0/255.0, 187.0/255.0, 1.0]
+DEF_COLOR = [38.0/255.0, 80.0/255.0, 255.0/255.0, 1.0]
 DEF_SHAPE = 'circle'
 
 
@@ -128,17 +128,16 @@ def render(g, file_name, layout):
     generate_color_map(g)
 
     vertex_color = g.new_vertex_property('vector<double>', val=[0, 0, 0, 0])
-    vertex_size = g.new_vertex_property('double', val=25)
+    vertex_size = g.new_vertex_property('double', val=30)
     vertex_font_size = g.new_vertex_property('int', val=10)
     vertex_font_family = g.new_vertex_property('string', 'helvatica')
     vertex_text_position = g.new_vertex_property('double', val=(math.pi*(2.0/8.0)))
-    vertex_text_color = g.new_vertex_property('vector<double>', val=[0.5,
-                                                                     0.5, 0.5, 0.9])
+    vertex_text_color = g.new_vertex_property('vector<double>', val=[0.3, 0.3, 0.3, 1.0])
 
     # Edge properties
     edge_color = g.new_edge_property('vector<double>', val=[0.179, 0.203,
                                                             0.210, 0.9])
-    edge_pen_width = g.new_edge_property('double', val=5)
+    edge_pen_width = g.new_edge_property('double', val=6)
     edge_end_marker = g.new_edge_property('string', val='none')
 
     gt.graph_draw(g, pos=pos,
@@ -165,9 +164,6 @@ def generate_color_map(g):
     g.vertex_properties['shape'] = g.new_vertex_property('string')
 
     prop_names = g.vertex_properties.keys()
-
-    logging.warn("---------------------- V props --------------------")
-    logging.warn(prop_names)
 
     if 'tax_id' in prop_names:
         for v in g.vertices():

@@ -4,8 +4,8 @@
 AWS_VPC="vpc-194d467b"
 AWS_SECURITY_GROUP="ci-http"
 
-aws_price="0.05"
-aws_instance_type="c4.xlarge"
+aws_price="0.04"
+aws_instance_type="c4.large"
 
 help() {
     echo "Usage: $0 [-i instance-type] [-p spot-instance-price] name driver" 1>&2
