@@ -12,6 +12,14 @@ class BitmapImageGenerator(Resource):
 
     def post(self):
         data = request.stream.read()
-        g = gg.get_graph(json.loads(data))
+        try:
+            cx = json.loads(data)
+        except:
+            return {
+                'error': 'Could not parse input JSON (CX).',
+                'code': 400
+            }, 400
+
+        g = gg.get_graph(cx)
         file_name = gg.get_image(g, 'png')
         return send_file(file_name, mimetype='image/png')

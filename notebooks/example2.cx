@@ -1,0 +1,145 @@
+[{
+  "numberVerification": [{
+    "longNumber": 281474976710655
+  }]
+}, {
+  "metaData": [{
+    "consistencyGroup": 1,
+    "elementCount": 1,
+    "lastUpdate": 1494962217138,
+    "name": "ndexStatus",
+    "properties": [],
+    "version": "1.0"
+  }, {
+    "consistencyGroup": 1,
+    "elementCount": 1,
+    "lastUpdate": 1494962334131,
+    "name": "provenanceHistory",
+    "properties": [],
+    "version": "1.0"
+  }, {
+    "consistencyGroup": 1,
+    "elementCount": 2,
+    "idCounter": 1,
+    "name": "nodes",
+    "properties": [],
+    "version": "1.0"
+  }, {
+    "consistencyGroup": 1,
+    "elementCount": 1,
+    "idCounter": 0,
+    "name": "edges",
+    "properties": [],
+    "version": "1.0"
+  }, {
+    "consistencyGroup": 1,
+    "elementCount": 2,
+    "name": "networkAttributes",
+    "properties": [],
+    "version": "1.0"
+  }, {
+    "consistencyGroup": 1,
+    "elementCount": 6,
+    "name": "edgeAttributes",
+    "properties": [],
+    "version": "1.0"
+  }]
+}, {
+  "ndexStatus": [{
+    "externalId": "3a8e42da-3a6c-11e7-8f50-0ac135e8bacf",
+    "creationTime": 1494962217138,
+    "modificationTime": 1494962217138,
+    "visibility": "PRIVATE",
+    "published": false,
+    "nodeCount": 2,
+    "edgeCount": 1,
+    "owner": "kenlo_testacct",
+    "ndexServerURI": "http://public.ndexbio.org",
+    "readOnly": false
+  }]
+}, {
+  "provenanceHistory": [{
+    "entity": {
+      "uri": "http://public.ndexbio.org/v2/network/3a8e42da-3a6c-11e7-8f50-0ac135e8bacf/summary",
+      "creationEvent": {
+        "startedAtTime": 1494962217138,
+        "endedAtTime": 1494962217138,
+        "eventType": "Program Upload in CX",
+        "inputs": null,
+        "properties": [{
+          "name": "user",
+          "value": "Ken Lo"
+        }, {
+          "name": "user name",
+          "value": "kenlo_testacct"
+        }]
+      },
+      "properties": [{
+        "name": "edge count",
+        "value": "1"
+      }, {
+        "name": "node count",
+        "value": "2"
+      }, {
+        "name": "dc:title",
+        "value": "sub_HNeXO attempt3 supporting network for CLIXO:24146"
+      }]
+    }
+  }]
+}, {
+  "nodes": [{
+    "@id": 0,
+    "n": "HNF4A"
+  }, {
+    "@id": 1,
+    "n": "SUB1"
+  }]
+}, {
+  "edges": [{
+    "@id": 0,
+    "s": 0,
+    "t": 1
+  }]
+}, {
+  "networkAttributes": [{
+    "n": "name",
+    "v": "sub_HNeXO attempt3 supporting network for CLIXO:24146"
+  }, {
+    "n": "Description",
+    "v": "sub_HNeXO attempt3 supporting network for CLIXO:24146"
+  }]
+}, {
+  "edgeAttributes": [{
+    "po": 0,
+    "n": "y2h",
+    "v": "false",
+    "d": "boolean"
+  }, {
+    "po": 0,
+    "n": "giant6",
+    "v": "0.0"
+  }, {
+    "po": 0,
+    "n": "giant5",
+    "v": "0.00340136054422"
+  }, {
+    "po": 0,
+    "n": "giant4",
+    "v": "0.0408163265306"
+  }, {
+    "po": 0,
+    "n": "PPI_at_least_1",
+    "v": "true",
+    "d": "boolean"
+  }, {
+    "po": 0,
+    "n": "biogrid",
+    "v": "true",
+    "d": "boolean"
+  }]
+}, {
+  "status": [{
+    "error": "",
+    "success": true
+  }]
+}]

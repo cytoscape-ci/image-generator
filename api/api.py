@@ -9,6 +9,8 @@ from status import Status
 
 
 app = Flask(__name__)
+app.config['BUNDLE_ERRORS'] = True
+
 api = Api(app)
 
 # Routing
